@@ -1,0 +1,44 @@
+{
+  "name": "clutch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:lan": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:vision": ".venv\\Scripts\\python.exe -m pytest services/vision/tests",
+    "test:all": "npm run test && npm run test:vision",
+    "vision:install": "python -m venv .venv && .venv\\Scripts\\python.exe -m pip install -r services/vision/requirements.txt",
+    "vision:soccer:install": "powershell -ExecutionPolicy Bypass -File services/vision/install-soccer-model.ps1",
+    "vision": ".venv\\Scripts\\python.exe -m uvicorn services.vision.app:app --host 127.0.0.1 --port 8765",
+    "vision:soccer": "set VISION_SPORT=soccer&& set VISION_DETECTOR=soccer-rfdetr&& set SOCCER_DEVICE=cuda&& .venv\\Scripts\\python.exe -m uvicorn services.vision.app:app --host 127.0.0.1 --port 8765",
+    "dev:all": "concurrently -k -n web,vision \"npm:dev\" \"npm:vision\"",
+    "dev:lan:all": "concurrently -k -n web,vision \"npm:dev:lan\" \"npm:vision\"",
+    "dev:soccer": "concurrently -k -n web,vision \"npm:dev\" \"npm:vision:soccer\"",
+    "analyst:provision": "node --experimental-strip-types scripts/provision-treasury-analyst.mts"
+  },
+  "dependencies": {
+    "@elevenlabs/react": "^1.0.0",
+    "next": "^16.3.5",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^22.18.3",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "^16.3.5",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.0"
+  }
+}

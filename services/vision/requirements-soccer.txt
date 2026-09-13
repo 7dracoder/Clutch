@@ -1,0 +1,15 @@
+# Optional research-only RF-DETR SoccerNet backend.
+# Install after the base requirements. The checkpoint is trained on the
+# non-commercial SoccerNet dataset and must not be used in production.
+# The pinned July 2025 checkpoint uses the legacy RF-DETR Large architecture.
+# Newer 1.10+ releases changed model shapes and cannot load this state dict.
+rfdetr==1.1.0
+transformers==4.52.4
+# RF-DETR's optional notebook dependencies otherwise pull an incompatible
+# OpenCV 5 build that shadows the worker's HOG APIs.
+opencv-python==4.12.0.88
+numpy==2.2.6
+torch==2.14.0
+torchvision==0.29.0
+pillow>=10
+huggingface_hub>=0.27
