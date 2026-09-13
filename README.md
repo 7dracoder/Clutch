@@ -11,7 +11,7 @@ People still make the calls. Clutch just warns earlier.
 
 ---
 
-## In plain English
+## What is Clutch?
 
 Think of a sportsbook as a shop that sells bets.
 
@@ -198,7 +198,4 @@ tests/               Vitest tests
 
 ---
 
-## Links
 
-- **Demo:** [https://youtu.be/9EOp63tJMFo](https://youtu.be/9EOp63tJMFo)
-- **GitHub:** [https://github.com/7dracoder/Clutch](https://github.com/7dracoder/Clutch)
